@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+html,
+body {
+  background: #0a0505;
+  color: #F5E9D4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Intentionally no `scroll-behavior: smooth` — native wheel scroll should be
+ * as direct as possible. */
+
+::selection {
+  background: rgba(189, 149, 62, 0.35);
+  color: #F5E9D4;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0505;
+}
+::-webkit-scrollbar-thumb {
+  background: #350200;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6C0200;
+}
+
+/* Utilities */
+/* Grain — rendered once as a fixed overlay on the body so it doesn't repaint
+ * with every scrolling section. Kept cheap: no mix-blend-mode on mobile. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+@media (min-width: 768px) {
+  body::before {
+    mix-blend-mode: overlay;
+    opacity: 0.08;
+  }
+}
+/* Kept as a no-op so existing JSX doesn't need touching — the effect now
+ * lives on body::before. */
+.film-grain {
+  display: none;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  z-index: 1;
+}
+
+/* `.glass` used to rely on backdrop-filter: blur(), which is one of the most
+ * expensive effects in the browser and was the main cause of scroll jank.
+ * Replaced with a solid tint — visually almost identical, no compositor cost. */
+.glass {
+  background: rgba(26, 5, 4, 0.78);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(180deg, #EEDFB1 0%, #D4B356 40%, #BD953E 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-maroon {
+  background: linear-gradient(180deg, #F5E9D4 0%, #D4B356 60%, #900500 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 10%,
+    #000 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 10%,
+    #000 90%,
+    transparent
+  );
+}
+
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-underline:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.prose-cinema h2 {
+  font-family: var(--font-display), serif;
+  font-size: 2rem;
+  line-height: 1.1;
+  color: #F5E9D4;
+  margin-top: 2.5rem;
+}
+
+.prose-cinema p {
+  color: rgba(245, 233, 212, 0.8);
+  line-height: 1.8;
+}

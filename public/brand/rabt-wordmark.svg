@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 80" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EEDFB1"/>
+      <stop offset="0.5" stop-color="#D4B356"/>
+      <stop offset="1" stop-color="#BD953E"/>
+    </linearGradient>
+  </defs>
+  <text x="0" y="58" font-family="Benaya, Georgia, serif" font-size="60" fill="url(#g)" letter-spacing="2">RABT FILMS</text>
+</svg>
