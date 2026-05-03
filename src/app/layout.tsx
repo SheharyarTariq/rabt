@@ -4,6 +4,7 @@ import { displayFont, scriptFont } from "@/lib/fonts";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
+import StickyContactCTA from "@/components/StickyContactCTA";
 
 export const metadata: Metadata = {
   title: {
@@ -28,7 +29,9 @@ export default function RootLayout({
           <main className="relative">{children}</main>
           <Footer />
         </SmoothScroll>
+        <StickyContactCTA />
       </body>
     </html>
   );
 }
+

@@ -15,10 +15,17 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    let rafId: number;
+    const onScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => setScrolled(window.scrollY > 24));
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   useEffect(() => {
@@ -28,10 +35,10 @@ export default function Navbar() {
   return (
     <header
       className={clsx(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        "fixed top-0 left-0 right-0 z-50 transition-[background-color,padding,border-color] duration-500",
         scrolled
           ? "bg-ink/85 border-b border-gold-500/10 py-3"
-          : "bg-transparent py-6"
+          : "bg-transparent border-b border-transparent py-6"
       )}
     >
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 flex items-center justify-between">

@@ -170,3 +170,28 @@ export const CLIENTS = [
   "Kismet",
   "Minār",
 ];
+
+export const TESTIMONIALS = [
+  {
+    quote:
+      "Rabt brought a stillness to the film that we hadn't thought possible for a brand commercial. The final cut was everything our brief wasn't — and everything our product needed.",
+    name: "Hana Mirza",
+    role: "Creative Director",
+    project: "Aether Eyewear",
+  },
+  {
+    quote:
+      "Working with the Rabt team felt like collaborating with people who genuinely love cinema. They understood the song before we'd even finished explaining it.",
+    name: "Bilal Saeed",
+    role: "Artist",
+    project: "Sahiba — Music Video",
+  },
+  {
+    quote:
+      "They shot our two-hundred-year-old linen story in three days and came back with something that felt like a feature film. Quietly exceptional.",
+    name: "Sana Chaudhry",
+    role: "Founder",
+    project: "Sana Linen Co.",
+  },
+];
+

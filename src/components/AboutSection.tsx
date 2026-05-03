@@ -46,22 +46,26 @@ export default function AboutSection() {
           <div className="md:col-span-7">
             <Reveal delay={0.2}>
               <div className="relative aspect-[4/5] max-w-[540px] mx-auto rounded-sm overflow-hidden border border-gold-500/20">
-                <div className="absolute inset-0 bg-gradient-to-br from-maroon-900/60 via-maroon-950 to-ink" />
                 <Image
-                  src="/brand/rabt-logo.png"
-                  alt="Rabt ربط"
+                  src="https://images.unsplash.com/photo-1512070679279-8988d32161be?auto=format&fit=crop&w=1200&q=80"
+                  alt="On set — Rabt Films"
                   fill
                   sizes="(min-width: 768px) 540px, 90vw"
-                  className="object-contain p-12 relative z-10"
+                  className="object-cover"
                 />
-                <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-ink/95 to-transparent">
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8">
                   <p className="font-script text-3xl text-gold-300">
                     the art of rabt
+                  </p>
+                  <p className="text-[10px] tracking-[0.3em] uppercase text-cream/60 mt-2">
+                    Lahore · Dubai
                   </p>
                 </div>
               </div>
             </Reveal>
           </div>
+
         </div>
       </div>
     </section>
