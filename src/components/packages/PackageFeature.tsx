@@ -148,7 +148,16 @@ export default function PackageFeature({
                   ))}
                 </ul>
 
-                <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+                <div className="mt-8">
+                  <p className="text-[10px] tracking-[0.4em] uppercase text-gold-400 mb-1">
+                    — Investment
+                  </p>
+                  <p className="font-display text-2xl md:text-3xl text-gradient-gold">
+                    {data.price}
+                  </p>
+                </div>
+
+                <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
                   <button
                     type="button"
                     onClick={() => setBookingOpen(true)}

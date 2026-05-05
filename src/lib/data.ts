@@ -12,7 +12,7 @@ export type Project = {
 
 export const SERVICES = [
   {
-    title: "Film & Commercial",
+    title: "Film & Fashion",
     body:
       "Brand films, commercials and long-form narrative pieces — from first treatment through final colour.",
   },
@@ -78,42 +78,6 @@ export const PROJECTS: Project[] = [
     tags: ["Wedding", "Soft", "Romantic"],
     description: "soft, simple, and meant to be.",
     video: "https://www.youtube.com/embed/DD7ecxCCz9k",
-  },
-];
-
-export const BLOG_POSTS = [
-  {
-    slug: "on-restraint",
-    title: "On Restraint — why we cut more than we add.",
-    excerpt:
-      "Good films are made by what you take out. A short essay on why restraint, silence and space are our most trusted tools.",
-    date: "March 2026",
-    category: "Craft",
-    readTime: "6 min read",
-    cover:
-      "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=2000&q=80",
-  },
-  {
-    slug: "treatment-first",
-    title: "Why we write the treatment before we pitch.",
-    excerpt:
-      "A treatment isn't a sales document — it's a promise. A look at how we build ours, why we won't skip them, and what a good one contains.",
-    date: "February 2026",
-    category: "Process",
-    readTime: "8 min read",
-    cover:
-      "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=2000&q=80",
-  },
-  {
-    slug: "notes-from-set",
-    title: "Three nights on set — dispatches from Sahiba.",
-    excerpt:
-      "Shooting a wedding film in three nights, a single room and too much tea — a set diary from the Sahiba shoot.",
-    date: "January 2026",
-    category: "On Set",
-    readTime: "5 min read",
-    cover:
-      "https://images.unsplash.com/photo-1543949806-2c9935e6e803?auto=format&fit=crop&w=2000&q=80",
   },
 ];
 

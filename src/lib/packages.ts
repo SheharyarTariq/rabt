@@ -4,6 +4,7 @@ export type PackageFeatureData = {
   titleLead: string;
   titleScript: string;
   titleTail: string;
+  price: string;
   body: string[];
   highlights: string[];
   imageLeft: { src: string; alt: string };
@@ -17,6 +18,7 @@ export const PAK_PACKAGES: PackageFeatureData[] = [
     titleLead: "The Heirloom Film",
     titleScript: "for",
     titleTail: "one timeless day",
+    price: "PKR 45,000",
     body: [
       "A timeless cinematic piece crafted to preserve the feeling of your wedding in its most elegant form.",
     ],
@@ -41,6 +43,7 @@ export const PAK_PACKAGES: PackageFeatureData[] = [
     titleLead: "The Legacy Story",
     titleScript: "for an",
     titleTail: "immersive celebration",
+    price: "PKR 70,000",
     body: [
       "A deeper, more immersive narrative capturing the emotion, energy, and essence of your celebration.",
     ],
@@ -66,6 +69,7 @@ export const PAK_PACKAGES: PackageFeatureData[] = [
     titleLead: "The Timeless Collection",
     titleScript: "for",
     titleTail: "moments that linger",
+    price: "PKR 35,000",
     body: [
       "An elegant photography experience focused on capturing moments that live beyond the day.",
     ],

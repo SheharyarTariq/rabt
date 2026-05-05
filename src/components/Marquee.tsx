@@ -1,6 +1,6 @@
 export default function Marquee() {
   const words = [
-    "Film · Commercial",
+    "Film · Fashion",
     "Wedding Films",
     "Documentary",
     "Story Telling",
