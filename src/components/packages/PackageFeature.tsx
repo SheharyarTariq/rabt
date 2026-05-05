@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
 import clsx from "clsx";
+import { useState } from "react";
 import { Reveal } from "../AnimatedText";
+import BookingModal from "./BookingModal";
 import type { PackageFeatureData } from "@/lib/packages";
 
 type Variant = "default" | "alt";
@@ -13,6 +18,7 @@ export default function PackageFeature({
   variant: Variant;
 }) {
   const isAlt = variant === "alt";
+  const [bookingOpen, setBookingOpen] = useState(false);
 
   return (
     <section
@@ -141,6 +147,22 @@ export default function PackageFeature({
                     </li>
                   ))}
                 </ul>
+
+                <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+                  <button
+                    type="button"
+                    onClick={() => setBookingOpen(true)}
+                    className="inline-flex items-center gap-3 rounded-full bg-gold-500 text-maroon-900 px-6 py-2.5 text-[11px] tracking-[0.3em] uppercase hover:bg-gold-300 transition-colors"
+                  >
+                    Book this package →
+                  </button>
+                  <Link
+                    href="/terms"
+                    className="text-[10px] tracking-[0.3em] uppercase text-gold-400 hover:text-gold-300 transition-colors underline-offset-4 hover:underline"
+                  >
+                    Terms &amp; Conditions
+                  </Link>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -168,6 +190,12 @@ export default function PackageFeature({
           </div>
         </Reveal>
       </div>
+
+      <BookingModal
+        open={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+        packageName={data.titleLead}
+      />
     </section>
   );
 }

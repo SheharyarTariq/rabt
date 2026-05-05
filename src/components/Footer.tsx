@@ -34,7 +34,7 @@ export default function Footer() {
               Studio
             </p>
             <ul className="space-y-2 text-cream/70 text-sm">
-              <li>Lahore · Dubai</li>
+              <li>Lahore · Islamabad</li>
               <li>Est. 2024</li>
             </ul>
           </div>

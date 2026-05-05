@@ -8,23 +8,25 @@ export function generateStaticParams() {
   return PROJECTS.map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const project = PROJECTS.find((p) => p.slug === params.slug);
+  const { slug } = await params;
+  const project = PROJECTS.find((p) => p.slug === slug);
   return {
     title: project ? project.title : "Project",
   };
 }
 
-export default function ProjectPage({
+export default async function ProjectPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const project = PROJECTS.find((p) => p.slug === params.slug);
+  const { slug } = await params;
+  const project = PROJECTS.find((p) => p.slug === slug);
   if (!project) notFound();
 
   const index = PROJECTS.findIndex((p) => p.slug === project.slug);
@@ -41,14 +43,24 @@ export default function ProjectPage({
       <section className="relative py-20">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <div className="relative aspect-[16/9] overflow-hidden rounded-sm border border-gold-500/15">
-            <Image
-              src={project.cover}
-              alt={project.title}
-              fill
-              sizes="(min-width: 1400px) 1400px, 100vw"
-              priority
-              className="object-cover"
-            />
+            {project.video ? (
+              <iframe
+                src={project.video}
+                title={project.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="absolute inset-0 h-full w-full"
+              />
+            ) : (
+              <Image
+                src={project.cover}
+                alt={project.title}
+                fill
+                sizes="(min-width: 1400px) 1400px, 100vw"
+                priority
+                className="object-cover"
+              />
+            )}
           </div>
 
           <div className="mt-16 grid gap-10 md:grid-cols-12">

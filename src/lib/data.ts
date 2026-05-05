@@ -7,6 +7,7 @@ export type Project = {
   cover: string;
   tags: string[];
   description: string;
+  video?: string;
 };
 
 export const SERVICES = [
@@ -21,12 +22,12 @@ export const SERVICES = [
       "Observational and interview-led documentary, told with restraint and a feel for the quiet moment.",
   },
   {
-    title: "Music Videos",
+    title: "Wedding Films",
     body:
-      "Performance films and concept-led music videos built around the song and the artist.",
+      "Performance films and concept-led wedding films built around the song and the artist.",
   },
   {
-    title: "Branded Content",
+    title: "Story Telling",
     body:
       "Episodic and social content, designed for the channel and the culture it lives in.",
   },
@@ -44,76 +45,39 @@ export const SERVICES = [
 
 export const PROJECTS: Project[] = [
   {
-    slug: "the-quiet-room",
-    title: "The Quiet Room",
-    type: "Short Film",
+    slug: "emaan-and-ali",
+    title: "Emaan & Ali",
+    type: "Wedding Film",
     year: "2025",
     client: "Independent",
-    cover:
-      "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=2000&q=80",
-    tags: ["Direction", "35mm", "Colour"],
+    cover: "/short-film/shortfilm1.PNG",
+    tags: ["Wedding", "Love Story", "Cinematic"],
     description:
-      "A one-room drama about two strangers, one night and the weight of what isn't said.",
+      "a love that feels like home, now and forever.",
+    video: "https://www.youtube.com/embed/n--BIdAZBuA",
   },
   {
-    slug: "northern-lines",
-    title: "Northern Lines",
-    type: "Commercial",
+    slug: "hamza-and-maryam-raja",
+    title: "Hamza & Maryam Raja",
+    type: "Wedding Film",
     year: "2025",
-    client: "Aether Eyewear",
-    cover:
-      "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=2000&q=80",
-    tags: ["Brand Film", "Product", "Location"],
-    description:
-      "A 60-second brand film for Aether's autumn drop, shot across three cities in one week.",
-  },
-  {
-    slug: "sahiba",
-    title: "Sahiba",
-    type: "Music Video",
-    year: "2024",
-    client: "Maahi Records",
-    cover:
-      "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=2000&q=80",
-    tags: ["Performance", "Narrative", "Studio"],
-    description:
-      "A performance-led music video built around a single, slow camera move.",
-  },
-  {
-    slug: "atlas-quarterly",
-    title: "Atlas Quarterly",
-    type: "Documentary",
-    year: "2024",
-    client: "Atlas Magazine",
-    cover:
-      "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=2000&q=80",
-    tags: ["Interview", "Observational"],
-    description:
-      "A quarterly documentary portrait series on makers, builders and the craft they keep.",
-  },
-  {
-    slug: "house-of-linen",
-    title: "House of Linen",
-    type: "Brand Film",
-    year: "2024",
-    client: "Sana Linen Co.",
-    cover:
-      "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=2000&q=80",
-    tags: ["Fashion", "Craft"],
-    description:
-      "A heritage film for a linen house — loom, light and two generations of weavers.",
-  },
-  {
-    slug: "tides",
-    title: "Tides",
-    type: "Short Film",
-    year: "2023",
     client: "Independent",
-    cover:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=80",
-    tags: ["Narrative", "Coastal", "16mm"],
+    cover: "/short-film/shortfilm2.PNG",
+    tags: ["Wedding", "Creative", "Connection"],
     description:
-      "A coastal short about inheritance, told in three acts and one long morning.",
+      "where creativity met connection, and turned into forever.",
+    video: "https://www.youtube.com/embed/uZ2PVm5HlB8",
+  },
+  {
+    slug: "kanza-and-subhan",
+    title: "Kanza & Subhan",
+    type: "Wedding Film",
+    year: "2025",
+    client: "Independent",
+    cover: "/short-film/shortfilm3.PNG",
+    tags: ["Wedding", "Soft", "Romantic"],
+    description: "soft, simple, and meant to be.",
+    video: "https://www.youtube.com/embed/DD7ecxCCz9k",
   },
 ];
 
@@ -144,7 +108,7 @@ export const BLOG_POSTS = [
     slug: "notes-from-set",
     title: "Three nights on set — dispatches from Sahiba.",
     excerpt:
-      "Shooting a music video in three nights, a single room and too much tea — a set diary from the Sahiba shoot.",
+      "Shooting a wedding film in three nights, a single room and too much tea — a set diary from the Sahiba shoot.",
     date: "January 2026",
     category: "On Set",
     readTime: "5 min read",
@@ -184,7 +148,7 @@ export const TESTIMONIALS = [
       "Working with the Rabt team felt like collaborating with people who genuinely love cinema. They understood the song before we'd even finished explaining it.",
     name: "Bilal Saeed",
     role: "Artist",
-    project: "Sahiba — Music Video",
+    project: "Sahiba — Wedding Film",
   },
   {
     quote:

@@ -35,15 +35,15 @@ export default function PackagesHero() {
           playsInline
           preload="metadata"
           aria-hidden="true"
-          className="h-full w-full object-cover object-center opacity-90"
+          className="h-full w-full object-cover object-center"
         >
           <source src="/videos/wed.mp4" type="video/mp4" />
           <source src="/videos/WED_COLOR.MOV" type="video/quicktime" />
         </video>
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/40 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/40 via-ink/15 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
       <div className="vignette" />
 
       <div className="relative z-10 flex min-h-[100vh] items-center px-6 md:px-10 pt-28">

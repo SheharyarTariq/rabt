@@ -1,9 +1,9 @@
 export default function Marquee() {
   const words = [
     "Film · Commercial",
-    "Music Video",
+    "Wedding Films",
     "Documentary",
-    "Branded Content",
+    "Story Telling",
     "Direction",
     "Colour · Post",
   ];

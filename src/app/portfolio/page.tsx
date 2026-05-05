@@ -10,7 +10,7 @@ export default function PortfolioPage() {
       <PageHeader
         eyebrow="Portfolio"
         title="Selected work."
-        intro="A curated set of films, commercials and music videos. For the full reel, get in touch — we'll send it over."
+        intro="A curated set of films, commercials and wedding films. For the full reel, get in touch — we'll send it over."
       />
       <PortfolioSection />
       <ContactSection />

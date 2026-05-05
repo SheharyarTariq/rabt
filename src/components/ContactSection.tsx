@@ -7,18 +7,52 @@ import clsx from "clsx";
 const TYPES = [
   "Commercial",
   "Documentary",
-  "Music Video",
+  "Wedding Film",
   "Narrative",
   "Branded Series",
   "Other",
 ];
 
-const BUDGETS = ["< 10k", "10–30k", "30–80k", "80–150k", "150k+"];
-
 export default function ContactSection() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle"
+  );
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [type, setType] = useState<string>("Commercial");
-  const [budget, setBudget] = useState<string>("30–80k");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("sending");
+    setErrorMsg(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, projectType: type, message }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Failed to send");
+      }
+      setStatus("sent");
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong");
+    }
+  }
+
+  const buttonLabel =
+    status === "sending"
+      ? "Sending…"
+      : status === "sent"
+        ? "Thanks — we'll be in touch"
+        : "Send message →";
 
   return (
     <section id="contact" className="relative py-28 md:py-40 overflow-hidden">
@@ -43,9 +77,9 @@ export default function ContactSection() {
 
           <Reveal delay={0.2}>
             <div className="space-y-6">
-              <Info label="Email" value="studio@rabtfilms.com" />
+              <Info label="Email" value="rabtfilms@gmail.com" />
               <Info label="Instagram" value="@rabt.films" />
-              <Info label="Studios" value="Lahore · Dubai" />
+              <Info label="Studios" value="Lahore · Islamabad" />
             </div>
           </Reveal>
         </div>
@@ -53,10 +87,7 @@ export default function ContactSection() {
         <div className="md:col-span-7">
           <Reveal delay={0.1}>
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
+              onSubmit={handleSubmit}
               className="glass border border-gold-500/15 rounded-sm p-8 md:p-10 space-y-8"
             >
               <div className="grid md:grid-cols-2 gap-6">
@@ -64,6 +95,8 @@ export default function ContactSection() {
                   <Label>Your name</Label>
                   <input
                     required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     className="w-full bg-transparent border-b border-gold-500/25 focus:border-gold-400 outline-none py-3 text-cream placeholder:text-cream/30"
                     placeholder="Ayesha Khan"
                   />
@@ -73,6 +106,8 @@ export default function ContactSection() {
                   <input
                     required
                     type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="w-full bg-transparent border-b border-gold-500/25 focus:border-gold-400 outline-none py-3 text-cream placeholder:text-cream/30"
                     placeholder="you@studio.com"
                   />
@@ -95,25 +130,12 @@ export default function ContactSection() {
               </Field>
 
               <Field>
-                <Label>Budget (USD)</Label>
-                <div className="flex flex-wrap gap-2">
-                  {BUDGETS.map((b) => (
-                    <Chip
-                      key={b}
-                      active={budget === b}
-                      onClick={() => setBudget(b)}
-                    >
-                      {b}
-                    </Chip>
-                  ))}
-                </div>
-              </Field>
-
-              <Field>
                 <Label>Tell us about the project</Label>
                 <textarea
                   required
                   rows={5}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   className="w-full bg-transparent border-b border-gold-500/25 focus:border-gold-400 outline-none py-3 text-cream placeholder:text-cream/30 resize-none"
                   placeholder="A short paragraph is plenty — timing, tone, references."
                 />
@@ -121,10 +143,17 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                className="inline-flex items-center gap-3 rounded-full bg-gold-500 text-maroon-900 px-7 py-3 text-[12px] tracking-[0.3em] uppercase hover:bg-gold-300 transition-colors"
+                disabled={status === "sending"}
+                className="inline-flex items-center gap-3 rounded-full bg-gold-500 text-maroon-900 px-7 py-3 text-[12px] tracking-[0.3em] uppercase hover:bg-gold-300 transition-colors disabled:opacity-60"
               >
-                {sent ? "Thanks — we'll be in touch" : "Send message →"}
+                {buttonLabel}
               </button>
+
+              {status === "error" && errorMsg && (
+                <p className="text-[11px] tracking-[0.2em] uppercase text-red-400">
+                  {errorMsg}
+                </p>
+              )}
             </form>
           </Reveal>
         </div>

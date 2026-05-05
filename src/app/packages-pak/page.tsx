@@ -15,6 +15,7 @@ export default function PackagesPakPage() {
       <PackagesHero />
       <PackageFeature data={PAK_PACKAGES[0]} variant="default" />
       <PackageFeature data={PAK_PACKAGES[1]} variant="alt" />
+      <PackageFeature data={PAK_PACKAGES[2]} variant="default" />
       <SoulCinemaSection />
     </>
   );
