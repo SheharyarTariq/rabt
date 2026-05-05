@@ -8,8 +8,6 @@ export const metadata = {
 };
 
 const TERMS = [
-  "Extended highlights will be of 7-8 min for a single cam (one videographer) and 15-17 min for a dual cam (two videographers) that covers all of your event decor, guests, stage, entrance. And the highlight video will be around 2-3 min.",
-  "Coffee table album of 12x36 inches with 10 pages contains around 65-70 images.",
   "A hard drive is to be provided by the client at the event day and all the raw pictures will be transferred to it. The client will have 2 weeks to send the selection.",
   "Delivery time of edited pictures is 6 weeks after selection by the client and 8 weeks for the video.",
   "Technical faults at the venue will not be our responsibility, especially the light. Client has to make sure the venue is well lit from all sides.",

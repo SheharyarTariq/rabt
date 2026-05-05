@@ -14,9 +14,25 @@ export default function PackagesPakPage() {
     <>
       <PackagesHero />
       <PackageFeature data={PAK_PACKAGES[0]} variant="default" />
-      <PackageFeature data={PAK_PACKAGES[1]} variant="alt" />
-      <PackageFeature data={PAK_PACKAGES[2]} variant="default" />
       <SoulCinemaSection />
+      <PackageFeature data={PAK_PACKAGES[1]} variant="alt" />
+      <SoulCinemaSection
+        videoSrc="/videos/frame2.mp4"
+        headline={
+          <>
+            Crafted<span className="mx-3 font-light">·</span>With Care
+          </>
+        }
+        body={
+          <>
+            From first light to the final frame, every film is built by hand —
+            graded, scored and shaped to feel like a memory rather than a
+            recording. No templates, no shortcuts, just cinema for the day you
+            won&apos;t forget.
+          </>
+        }
+      />
+      <PackageFeature data={PAK_PACKAGES[2]} variant="default" />
     </>
   );
 }
