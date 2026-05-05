@@ -3,9 +3,9 @@ import nodemailer from "nodemailer";
 
 export async function POST(request: Request) {
   try {
-    const { name, email, phone, packageName } = await request.json();
+    const { name, email, phone, instagram, packageName } = await request.json();
 
-    if (!name || !email || !phone || !packageName) {
+    if (!name || !email || !phone || !instagram || !packageName) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
@@ -31,11 +31,12 @@ export async function POST(request: Request) {
       to: adminEmail,
       replyTo: email,
       subject: `New package booking — ${packageName} · ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nPackage: ${packageName}`,
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nInstagram: ${instagram}\nPackage: ${packageName}`,
       html: renderBookingEmail({
         name: escapeHtml(name),
         email: escapeHtml(email),
         phone: escapeHtml(phone),
+        instagram: escapeHtml(instagram),
         packageName: escapeHtml(packageName),
       }),
     });
@@ -63,8 +64,12 @@ function renderBookingEmail(fields: {
   name: string;
   email: string;
   phone: string;
+  instagram: string;
   packageName: string;
 }) {
+  const igHandle = fields.instagram.replace(/^@/, "");
+  const igUrl = `https://instagram.com/${encodeURIComponent(igHandle)}`;
+  const igDisplay = `@${igHandle}`;
   const row = (label: string, value: string) => `
     <tr>
       <td style="padding: 14px 24px; border-bottom: 1px solid rgba(189,149,62,0.18); font-family: Georgia, 'Times New Roman', serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #BD953E; width: 140px; vertical-align: top;">${label}</td>
@@ -110,6 +115,7 @@ function renderBookingEmail(fields: {
                       ${row("Name", fields.name)}
                       ${row("Email", `<a href="mailto:${fields.email}" style="color: #D4B356; text-decoration: none;">${fields.email}</a>`)}
                       ${row("Phone", `<a href="tel:${fields.phone}" style="color: #D4B356; text-decoration: none;">${fields.phone}</a>`)}
+                      ${row("Instagram", `<a href="${igUrl}" style="color: #D4B356; text-decoration: none;">${igDisplay}</a>`)}
                     </table>
                   </td>
                 </tr>

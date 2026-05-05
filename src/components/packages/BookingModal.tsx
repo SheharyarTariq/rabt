@@ -17,6 +17,7 @@ export default function BookingModal({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [instagram, setInstagram] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
@@ -50,7 +51,7 @@ export default function BookingModal({
       const res = await fetch("/api/booking", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone, packageName }),
+        body: JSON.stringify({ name, email, phone, instagram, packageName }),
       });
 
       if (!res.ok) {
@@ -62,6 +63,7 @@ export default function BookingModal({
       setName("");
       setEmail("");
       setPhone("");
+      setInstagram("");
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong");
@@ -154,6 +156,15 @@ export default function BookingModal({
                   required
                   autoComplete="tel"
                 />
+                <Field
+                  label="Instagram Username"
+                  type="text"
+                  value={instagram}
+                  onChange={setInstagram}
+                  required
+                  autoComplete="off"
+                  placeholder="@yourhandle"
+                />
 
                 <div>
                   <label className="block text-[10px] tracking-[0.3em] uppercase text-gold-400 mb-2">
@@ -204,6 +215,7 @@ function Field({
   onChange,
   required,
   autoComplete,
+  placeholder,
 }: {
   label: string;
   type: string;
@@ -211,6 +223,7 @@ function Field({
   onChange: (v: string) => void;
   required?: boolean;
   autoComplete?: string;
+  placeholder?: string;
 }) {
   return (
     <div>
@@ -223,6 +236,7 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         required={required}
         autoComplete={autoComplete}
+        placeholder={placeholder}
         className="w-full bg-ink/60 border border-gold-500/30 rounded-sm px-4 py-3 text-cream placeholder-cream/40 focus:border-gold-400 focus:outline-none transition-colors"
       />
     </div>
