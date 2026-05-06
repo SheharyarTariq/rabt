@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { AnimatedHeadline } from "../AnimatedText";
 
-export default function PackagesHero() {
+export default function PackagesHero({ region = "Pakistan" }: { region?: string }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function PackagesHero() {
           </motion.p>
 
           <AnimatedHeadline
-            text={"Packages ·\nPakistan"}
+            text={`Packages ·\n${region}`}
             className="text-5xl md:text-7xl lg:text-[8rem] text-gradient-gold max-w-5xl"
           />
 
