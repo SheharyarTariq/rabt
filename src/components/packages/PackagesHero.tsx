@@ -5,7 +5,11 @@ import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { AnimatedHeadline } from "../AnimatedText";
 
-export default function PackagesHero({ region = "Pakistan" }: { region?: string }) {
+export default function PackagesHero({
+  region = "Pakistan",
+}: {
+  region?: string;
+}) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
@@ -68,9 +72,9 @@ export default function PackagesHero({ region = "Pakistan" }: { region?: string 
             transition={{ duration: 0.9, delay: 0.8 }}
             className="mt-10 max-w-lg text-cream/75 text-lg leading-relaxed"
           >
-            Two packages, one craft. Cinema for weddings across Lahore,
-            Karachi, Islamabad and beyond — restrained, story-led, made to
-            be watched a decade from now.
+            Three packages, one craft. Cinema for weddings across Lahore,
+            Karachi, Islamabad and beyond — restrained, story-led, made to be
+            watched a decade from now.
           </motion.p>
 
           <motion.div
