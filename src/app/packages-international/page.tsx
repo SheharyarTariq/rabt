@@ -12,7 +12,7 @@ export const metadata = {
 export default function PackagesPakPage() {
   return (
     <>
-      <PackagesHero />
+      <PackagesHero region="International" />
       <PackageFeature data={INTERNATIONAL_PACKAGES[0]} variant="default" />
       <SoulCinemaSection />
       <PackageFeature data={INTERNATIONAL_PACKAGES[1]} variant="alt" />
