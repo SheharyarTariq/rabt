@@ -177,27 +177,6 @@ export default function PackageFeature({
           </Reveal>
         </div>
 
-        {/* Highlights strip — overlaps the bottom of the dropped left image */}
-        <Reveal delay={0.4}>
-          <div
-            className={clsx(
-              "relative z-20 mt-32 md:mt-40 flex flex-wrap items-center justify-center gap-x-10 gap-y-4",
-              isAlt ? "md:justify-start" : "md:justify-center"
-            )}
-          >
-            {data.highlights.map((item, i) => (
-              <span
-                key={item}
-                className="flex items-center gap-10 text-[10px] tracking-[0.3em] uppercase text-cream/70"
-              >
-                {item}
-                {i < data.highlights.length - 1 && (
-                  <span className="h-3 w-px bg-gold-500/40" />
-                )}
-              </span>
-            ))}
-          </div>
-        </Reveal>
       </div>
 
       <BookingModal
