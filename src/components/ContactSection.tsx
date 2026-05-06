@@ -15,7 +15,7 @@ const TYPES = [
 
 export default function ContactSection() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle"
+    "idle",
   );
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [type, setType] = useState<string>("Commercial");
@@ -78,7 +78,7 @@ export default function ContactSection() {
           <Reveal delay={0.2}>
             <div className="space-y-6">
               <Info label="Email" value="rabtfilms@gmail.com" />
-              <Info label="Instagram" value="@rabt.films" />
+              <Info label="Instagram" value="@rabtfilms" href="https://www.instagram.com/rabtfilms/" />
               <Info label="Studios" value="Lahore · Islamabad" />
             </div>
           </Reveal>
@@ -162,13 +162,19 @@ export default function ContactSection() {
   );
 }
 
-function Info({ label, value }: { label: string; value: string }) {
+function Info({ label, value, href }: { label: string; value: string; href?: string }) {
   return (
     <div>
       <p className="text-[10px] tracking-[0.3em] uppercase text-gold-400 mb-2">
         {label}
       </p>
-      <p className="font-display text-2xl text-cream">{value}</p>
+      {href ? (
+        <a href={href} target="_blank" rel="noopener noreferrer" className="font-display text-2xl text-cream hover:text-gold-400 transition-colors">
+          {value}
+        </a>
+      ) : (
+        <p className="font-display text-2xl text-cream">{value}</p>
+      )}
     </div>
   );
 }
@@ -202,7 +208,7 @@ function Chip({
         "rounded-full border px-4 py-2 text-[11px] tracking-[0.2em] uppercase transition-all",
         active
           ? "bg-gold-500 text-maroon-900 border-gold-500"
-          : "border-gold-500/30 text-cream/70 hover:border-gold-400 hover:text-gold-300"
+          : "border-gold-500/30 text-cream/70 hover:border-gold-400 hover:text-gold-300",
       )}
     >
       {children}
